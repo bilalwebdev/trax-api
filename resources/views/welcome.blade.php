@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- You are: (shop domain name) -->
-    <p>You are: {{ $shopDomain ?? Auth::user()->name }}</p>
+    <p>shopOrigin: "{{ $shopDomain ?? Auth::user()->name }}"</p>
 @endsection
 
 @section('scripts')
