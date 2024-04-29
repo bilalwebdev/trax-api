@@ -168,7 +168,7 @@ return [
     |
     */
 
-    'api_version' => env('SHOPIFY_API_VERSION', '2024-01'),
+    'api_version' => env('SHOPIFY_API_VERSION', '2024-04'),
 
     /*
     |--------------------------------------------------------------------------
@@ -374,7 +374,6 @@ return [
     | This option is for defining webhooks.
     | `topic` is the GraphQL value of the Shopify webhook event.
     | `address` is the endpoint to call.
-    |
     | Valid values for `topic` can be found here:
     | https://shopify.dev/api/admin/graphql/reference/events/webhooksubscriptiontopic
     |
@@ -415,7 +414,7 @@ return [
     'scripttags' => [
 
         [
-            'src' => env('SHOPIFY_SCRIPTTAG_1_SRC', 'https://some-app.com/some-controller/js-method-response'),
+            'src' => env('APP_URL') . 'js/verify-kit.js',
             'event' => env('SHOPIFY_SCRIPTTAG_1_EVENT', 'onload'),
             'display_scope' => env('SHOPIFY_SCRIPTTAG_1_DISPLAY_SCOPE', 'online_store')
         ],

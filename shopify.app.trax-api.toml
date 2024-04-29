@@ -1,0 +1,19 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "41e76936bfc811aa58c34520d6c1a4dc"
+name = "Trax-API"
+handle = "trax-api"
+application_url = "https://1951-182-185-207-119.ngrok-free.app/"
+embedded = true
+
+[build]
+dev_store_url = "traxdev.myshopify.com"
+
+[auth]
+redirect_urls = [ "https://1951-182-185-207-119.ngrok-free.app/authenticate" ]
+
+[webhooks]
+api_version = "2024-04"
+
+[pos]
+embedded = false
