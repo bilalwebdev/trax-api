@@ -14,15 +14,20 @@
 <body>
 
     <div class="container  col-md-6">
+        @if (session()->has('success'))
+            <span class="alert text-success">{{ session()->get('success') }}</span>
+        @endif
         <div class="card mt-4">
             <div class="card-body">
                 <form action="{{ route('verify.kit') }}" method="post">
                     @csrf
                     <div class="">
-                        <label for="">Enter Kit</label>
+                        <label for="">Enter Kit No</label>
                         <input type="text" class="form-control" name="kit_no" required>
                     </div>
-                    <button type="submit" class="btn btn-primary mt-2">Verify Kit</button>
+                    <input type="submit" value="Verify kit" class="btn btn-primary btn-sm mt-2" name="submit" />
+                    <input type="submit" value="Check status" class="btn btn-primary btn-sm mt-2" name="submit" />
+                    <input type="submit" value="Get pdf" class="btn btn-primary btn-sm mt-2" name="submit" />
                 </form>
             </div>
         </div>
