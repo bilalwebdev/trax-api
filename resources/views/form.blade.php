@@ -8,7 +8,7 @@
     le" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         crossorigin="anonymous">
-    <title>Document</title>
+    <title>Trax-API</title>
 </head>
 
 <body>
