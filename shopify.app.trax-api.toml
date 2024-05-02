@@ -10,7 +10,7 @@ embedded = true
 dev_store_url = "traxdev.myshopify.com"
 
 [auth]
-redirect_urls = [ "https://trax-api.test/test/authenticate" ]
+redirect_urls = [ "https://trax-api.test/authenticate" ]
 
 [webhooks]
 api_version = "2024-04"
