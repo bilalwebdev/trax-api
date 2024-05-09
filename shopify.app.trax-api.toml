@@ -1,9 +1,9 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "41e76936bfc811aa58c34520d6c1a4dc"
-name = "Trax-API"
-handle = "trax-api"
-application_url = "https://trax-api.test/test"
+client_id = "e0f414c0f800cba30d0e2df102e27403"
+name = "TraxBarcodeVerification"
+handle = "traxregistration"
+application_url = "https://trax-api.test"
 embedded = true
 
 [build]

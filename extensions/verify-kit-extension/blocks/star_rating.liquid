@@ -112,8 +112,8 @@
   <div class="container col-md-6 mb-6">
 
     <div>
-      <div class="tab active" onclick="changeTab('tab1')">Register Barcode</div>
-      <div class="tab" onclick="changeTab('tab2')">Verify Barcode</div>
+      <div class="tab active" onclick="changeTab('tab1')">Register Test Barcode</div>
+      <div class="tab" onclick="changeTab('tab2')">Verify Test Barcode Status</div>
     </div>
 
     <div id="tab1" class="tab-content" style="display: block;">
@@ -121,8 +121,8 @@
 
         <div class="field" style="margin-top: 15px;">
           <input class="field__input mt-2" autocomplete="name" type="text" id="name" name="name" required
-            placeholder="Name">
-          <label class="field__label" for="name">Name</label>
+            placeholder="Full Name">
+          <label class="field__label" for="name">Full Name</label>
         </div>
         <div class="field" style="margin-top: 15px;">
           <input class="field__input mt-2" autocomplete="phone" type="text" id="phone" name="phone" required
@@ -139,10 +139,7 @@
             placeholder="Barcode">
           <label class="field__label" for="barcode">Barcode</label>
         </div>
-
-        <input type="hidden" name="store_url" id="store_url" value="{{ shop.url }}">
-
-        <span id="err_kit" class="text-danger hidden" style="font-size: 14px;">This field is required</span>
+        <input type="hidden" name="store_url" id="store_url" value="{{ shop.url }}" />
         <div class="d-flex">
           <button type="button" id="register" onclick="registerCustomer()" class="button mt-2">
             <span id="rg_btn">Register</span>
@@ -168,10 +165,10 @@
 
         <div class="field">
           <input class="field__input" autocomplete="name" type="text" id="kit_no" name="kit_no" value=""
-            placeholder="Barcode">
-          <label class="field__label" for="kit_no">Barcode</label>
+            placeholder="Test Barcode">
+          <label class="field__label" for="kit_no">Test Barcode</label>
         </div>
-        <span id="err_kit" class="text-danger hidden" style="font-size: 14px;">This field is required</span>
+        <div id="err_kit" class="text-danger hidden" style="font-size: 14px;">This field is required</div>
         <div class="d-flex">
           <button type="button" id="verify_kit" onclick="verifyKit()" value="" class="button mt-2">
             <span id="vf_btn">Verify Barcode</span>
@@ -193,7 +190,8 @@
 
       <div class="alert-e hidden" id="err_msg">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        <strong>Error!</strong> Not found.
+        <strong>Error!</strong> This Barcode is not exist. Contact here for details <strong>001
+          833-226-2441</strong>.
       </div>
     </div>
   </div>
