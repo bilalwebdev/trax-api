@@ -1,16 +1,16 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "e0f414c0f800cba30d0e2df102e27403"
-name = "TraxBarcodeVerification"
+name = "TraxRegistration"
 handle = "traxregistration"
-application_url = "https://trax-api.test"
+application_url = "https://ddd1-154-198-69-34.ngrok-free.app"
 embedded = true
 
 [build]
 dev_store_url = "traxdev.myshopify.com"
 
 [auth]
-redirect_urls = [ "https://trax-api.test/authenticate" ]
+redirect_urls = [ "https://ddd1-154-198-69-34.ngrok-free.app/authenticate" ]
 
 [webhooks]
 api_version = "2024-04"

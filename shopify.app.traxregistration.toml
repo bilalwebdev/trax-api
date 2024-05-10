@@ -1,0 +1,19 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "e0f414c0f800cba30d0e2df102e27403"
+name = "TraxRegistration"
+handle = "traxregistration"
+application_url = "https://trax-api.test/"
+embedded = true
+
+[build]
+include_config_on_deploy = true
+
+[auth]
+redirect_urls = [ "https://trax-api.test/authenticate" ]
+
+[webhooks]
+api_version = "2024-04"
+
+[pos]
+embedded = false

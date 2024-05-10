@@ -1,205 +1,217 @@
-<!DOCTYPE html>
-<html lang="en">
+<style>
+  .alert-success {
+    padding: 5px;
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    crossorigin="anonymous">
-  <title>Trax-API</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer>
-  </script>
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
 
+  .alert-error {
+    padding: 5px;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
 
-  <style>
-    .alert-success {
-      padding: 5px;
+  .loader {
+    border: 3px solid #f3f3f3;
+    /* Light grey background */
+    border-top: 3px solid #3498db;
+    /* Blue */
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+  }
 
-      font-size: 14px;
-      margin-bottom: 20px;
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
     }
 
-    .alert-error {
-      padding: 5px;
-      font-size: 14px;
-      margin-bottom: 20px;
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Optional: Adjust button size and alignment */
+  #myButton {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+
+  .tab {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    font-size: 14px;
+  }
+
+  .tab-content {
+    border: 1px solid #ccc;
+    border-top: none;
+    padding: 10px;
+    display: none;
+  }
+
+  .active {
+    background-color: #eee;
+  }
+
+  .alert-e {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    font-size: 14px;
+  }
+
+  .alert-s {
+    padding: 20px;
+    background-color: #8ddd7c;
+    color: white;
+    font-size: 14px;
+  }
+
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .closebtn:hover {
+    color: black;
+  }
+
+  .trx_field__input {
+    border: 1px solid black;
+  }
+
+  .trx_field {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+  }
+
+  .trax-container {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 767px) {
+    .trax-container {
+      width: 100% !important;
+      padding: 0 25px;
     }
 
-    .loader {
-      border: 3px solid #f3f3f3;
-      /* Light grey background */
-      border-top: 3px solid #3498db;
-      /* Blue */
-      border-radius: 50%;
-      width: 14px;
-      height: 14px;
-      animation: spin 1s linear infinite;
-      display: inline-block;
-      vertical-align: middle;
-    }
+  }
 
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    /* Optional: Adjust button size and alignment */
-    #myButton {
-      padding: 10px 20px;
-      font-size: 16px;
-    }
+  .text-danger {
+    color: red;
+  }
+</style>
 
 
-    .tab {
-      cursor: pointer;
-      padding: 10px;
-      border: 1px solid #ccc;
-      display: inline-block;
-      font-size: 14px;
-    }
+<div class="trax-container">
 
-    .tab-content {
-      border: 1px solid #ccc;
-      border-top: none;
-      padding: 10px;
-      display: none;
-    }
-
-    .active {
-      background-color: #eee;
-    }
-
-    .alert-e {
-      padding: 20px;
-      background-color: #f44336;
-      color: white;
-      font-size: 14px;
-    }
-
-    .alert-s {
-      padding: 20px;
-      background-color: #8ddd7c;
-      color: white;
-      font-size: 14px;
-    }
-
-    .closebtn {
-      margin-left: 15px;
-      color: white;
-      font-weight: bold;
-      float: right;
-      font-size: 22px;
-      line-height: 20px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .closebtn:hover {
-      color: black;
-    }
-  </style>
-
-</head>
-
-<body>
-
-  <div class="container col-md-6 mb-6">
-
-    <div>
-      <div class="tab active" onclick="changeTab('tab1')">Register Test Barcode</div>
-      <div class="tab" onclick="changeTab('tab2')">Verify Test Barcode Status</div>
-    </div>
-
-    <div id="tab1" class="tab-content" style="display: block;">
-      <form id="myForm2" method="post" style="margin-bottom:30px">
-
-        <div class="field" style="margin-top: 15px;">
-          <input class="field__input mt-2" autocomplete="name" type="text" id="name" name="name" required
-            placeholder="Full Name">
-          <label class="field__label" for="name">Full Name</label>
-        </div>
-        <div class="field" style="margin-top: 15px;">
-          <input class="field__input mt-2" autocomplete="phone" type="text" id="phone" name="phone" required
-            placeholder="Phone">
-          <label class="field__label" for="phone">Phone</label>
-        </div>
-        <div class="field" style="margin-top: 15px;">
-          <input class="field__input mt-2" autocomplete="name" type="text" id="email" name="email" required
-            placeholder="Email">
-          <label class="field__label" for="email">Email</label>
-        </div>
-        <div class="field" style="margin-top: 15px;">
-          <input class="field__input mt-2" autocomplete="name" type="text" id="barcode" name="barcode" required
-            placeholder="Barcode">
-          <label class="field__label" for="barcode">Barcode</label>
-        </div>
-        <input type="hidden" name="store_url" id="store_url" value="{{ shop.url }}" />
-        <div class="d-flex">
-          <button type="button" id="register" onclick="registerCustomer()" class="button mt-2">
-            <span id="rg_btn">Register</span>
-            <div id="loader_2" class="loader" style="display: none;"></div>
-          </button>
-        </div>
-      </form>
-
-      <div class="alert-s hidden" id="reg_success">
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        <strong>Success!</strong> Registration successfull.
-      </div>
-      <div id="reg_errs" class="alert-e hidden">
-        <strong>Error!</strong>
-        <ul id="errorList"></ul>
-      </div>
-
-    </div>
-
-    <div id="tab2" class="tab-content">
-      <!-- You will need to replace 'action' with a valid Liquid or platform-specific URL -->
-      <form id="myForm" method="post" style="margin-bottom:30px">
-
-        <div class="field">
-          <input class="field__input" autocomplete="name" type="text" id="kit_no" name="kit_no" value=""
-            placeholder="Test Barcode">
-          <label class="field__label" for="kit_no">Test Barcode</label>
-        </div>
-        <div id="err_kit" class="text-danger hidden" style="font-size: 14px;">This field is required</div>
-        <div class="d-flex">
-          <button type="button" id="verify_kit" onclick="verifyKit()" value="" class="button mt-2">
-            <span id="vf_btn">Verify Barcode</span>
-            <div id="loader_1" class="loader" style="display: none;"></div>
-          </button>
-          <button type="button" style="margin-left: 10px;" id="get_pdf" onclick="getPdf()" value=""
-            class="button hidden ml-2  mt-2" name="submit">
-            <span id="pdf_btn">Print Kit</span>
-            <div id="loader_2" class="loader" style="display: none;"></div>
-          </button>
-        </div>
-      </form>
-
-      <div class="alert-s hidden" id="success_msg">
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        <strong>Success!</strong> kit exists.
-        <strong>Status!</strong> <span id="status"></span>.
-      </div>
-
-      <div class="alert-e hidden" id="err_msg">
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        <strong>Error!</strong> This Barcode is not exist. Contact here for details <strong>001
-          833-226-2441</strong>.
-      </div>
-    </div>
+  <div>
+    <div class="tab active" onclick="changeTab('tab1')">Register Test Barcode</div>
+    <div class="tab" onclick="changeTab('tab2')">Check Test Status</div>
   </div>
 
+  <div id="tab1" class="tab-content" style="display: block;">
+    <form id="myForm2" method="post" style="margin-bottom:30px">
+
+      <div class="trx_field" style="margin-top: 15px;">
+        <label class="trx_field__label" for="name">Full Name</label>
+        <input class="trx_field__input" autocomplete="name" type="text" id="name" name="name" required placeholder="">
+      </div>
+      <div class="trx_field" style="margin-top: 15px;">
+        <label class="trx_field__label" for="phone">Phone</label>
+        <input class="trx_field__input" autocomplete="phone" type="text" id="phone" name="phone" required
+          placeholder="">
+      </div>
+      <div class="trx_field" style="margin-top: 15px;">
+        <label class="trx_field__label" for="email">Email</label>
+        <input class="trx_field__input" autocomplete="name" type="text" id="email" name="email" required placeholder="">
+      </div>
+      <div class="trx_field" style="margin-top: 15px;">
+        <label class="trx_field__label" for="barcode">Barcode</label>
+        <input class="trx_field__input" autocomplete="name" type="text" id="barcode" name="barcode" required
+          placeholder="">
+      </div>
+      <input type="hidden" name="store_url" id="store_url" value="{{ shop.url }}" />
+
+      <div class="d-flex">
+        <button type="button" id="register" onclick="registerCustomer()" class="button" style="margin-top: 10px;">
+          <span id="rg_btn">Register</span>
+          <div id="loader_3" class="loader" style="display: none;"></div>
+        </button>
+      </div>
+    </form>
+
+    <div class="alert-s hidden" id="reg_success">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      <strong>Success!</strong> Registration successfull.
+    </div>
+    <div id="reg_errs" class="alert-e hidden">
+      <strong>Error!</strong>
+      <ul id="errorList"></ul>
+    </div>
+
+  </div>
+
+  <div id="tab2" class="tab-content">
+    <!-- You will need to replace 'action' with a valid Liquid or platform-specific URL -->
+    <form id="myForm" method="post" style="margin-bottom:30px">
+
+      <div class="trx_field">
+        <label class="trx_field__label" for="kit_no">Test Barcode</label>
+        <input class="trx_field__input" autocomplete="name" type="text" id="kit_no" name="kit_no" value=""
+          placeholder="">
+
+      </div>
+      <div id="err_kit" class="text-danger hidden" style="font-size: 14px;">This field is required</div>
+      <div class="d-flex">
+        <button type="button" id="verify_kit" onclick="verifyKit()" value="" class="button" style="margin-top: 10px;">
+          <span id="vf_btn">Check Status</span>
+          <div id="loader_1" class="loader" style="display: none;"></div>
+        </button>
+        <button type="button" style="margin-left: 10px;" id="get_pdf" onclick="getPdf()" value=""
+          class="button hidden ml-2" style="margin-top: 10px; margin-left: 10px;" name="submit">
+          <span id="pdf_btn">Print Kit</span>
+          <div id="loader_2" class="loader" style="display: none;"></div>
+        </button>
+      </div>
+    </form>
+
+    <div class="alert-s hidden" id="success_msg">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      <strong>Success!</strong> kit exists.
+      <strong>Status!</strong> <span id="status"></span>.
+    </div>
+
+    <div class="alert-e hidden" id="err_msg">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      <strong>Error!</strong> This Barcode is not exist. Please Contact Customer Service <strong><a
+          style="text-decoration: none;" href="tel:001
+      833-226-2441">001
+          833-226-2441</a></strong>.
+    </div>
+  </div>
+</div>
 
 
 
-</body>
+
+
 
 <script>
 
@@ -260,12 +272,12 @@
   function getPdf() {
 
     const button = document.getElementById('get_pdf');
-    const loader = document.getElementById('loader_2');
+    const loader2 = document.getElementById('loader_2');
     const buttonText = document.getElementById('pdf_btn');
 
     // Hide button text and show loader
     buttonText.style.display = 'none';
-    loader.style.display = 'inline-block';
+    loader2.style.display = 'inline-block';
 
 
     var kit_no = document.getElementById('kit_no').value;
@@ -312,7 +324,7 @@
       .finally(() => {
         // Restore button text and hide loader
         buttonText.style.display = 'inline';
-        loader.style.display = 'none';
+        loader2.style.display = 'none';
       });
   }
 
@@ -339,7 +351,6 @@
     const errorContainer = document.getElementById('reg_errs');
     const errorList = document.getElementById('errorList');
     errorList.innerHTML = '';
-
     if (errors && Object.keys(errors).length > 0) {
       Object.keys(errors).forEach(key => {
         errors[key].forEach(message => {
@@ -367,11 +378,11 @@
 
 
     const button = document.getElementById('register');
-    const loader = document.getElementById('loader_2');
+    const loader3 = document.getElementById('loader_3');
     const buttonText = document.getElementById('rg_btn');
 
     buttonText.style.display = 'none';
-    loader.style.display = 'inline-block';
+    loader3.style.display = 'inline-block';
 
     const myHeaders = new Headers();
     myHeaders.append("api-key", "6111f22f-twaf-6157-ezsz-0c56cfb01053");
@@ -399,14 +410,18 @@
         } else {
           document.getElementById('reg_success').classList.add('hidden');
           document.getElementById('reg_errs').classList.remove('hidden');
-          displayErrors(result.message);
+          displayErrors(result.errors);
         }
       })
-      .catch((error) => console.error(error))
+      .catch((error) => {
+        buttonText.style.display = 'inline';
+        loader3.style.display = 'none';
+        console.error(error)
+      })
       .finally(() => {
         // Restore button text and hide loader
         buttonText.style.display = 'inline';
-        loader.style.display = 'none';
+        loader3.style.display = 'none';
       });
 
   }
@@ -414,12 +429,8 @@
 
 
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" defer crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" defer
-  crossorigin="anonymous"></script>
 
-</html>
+
 
 
 {% schema %}
